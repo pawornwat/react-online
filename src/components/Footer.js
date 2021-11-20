@@ -1,12 +1,16 @@
 import React from "react";
 
-const Name = () =>{
+const Footer = () =>{
+
+    const name = (fullname,nickname) =>{
+        return fullname + " " + nickname
+    }
     return(
         <div>
             <h1>
-                Pawornwat Tangwattanapornchai
+                {name("Pawornwat Tangwattanapornchai","Fight")}
             </h1>
         </div>
     )
 }
-export default Name
+export default Footer
