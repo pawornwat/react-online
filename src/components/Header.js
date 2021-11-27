@@ -1,4 +1,6 @@
 import React from "react"
+import Title from "../styles/title/Title"
+import Button from "../styles/button/Button"
 // import Logo from "./Logo"
 
 
@@ -9,6 +11,7 @@ const Header = () =>{
     }
 
     // const isLogin = false   
+    const keyword = 'correct'
     const showMe =  () => {
         alert('Hello React')
     }
@@ -20,6 +23,7 @@ const Header = () =>{
 
     return(
         <div>
+            <Title>React Project</Title>
             <h1>Hello {showMassage()}</h1>
 
             {/* {
@@ -40,6 +44,7 @@ const Header = () =>{
             <button onClick={showMe}>
                 ClickMe
             </button>
+            <Button onClick={showMe} keyword={keyword}>ClickMe</Button>
             
             <ul>
                 {
