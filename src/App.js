@@ -7,7 +7,7 @@ function App() {
     <>
       <Logo></Logo>
       <Header></Header>
-      <Footer></Footer>
+      <Footer title="Tni" website="www.facebook.com" address="Bangkok" postcode={10250} isOpen={true}></Footer>
     </>
   );
 }
