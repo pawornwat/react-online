@@ -7,12 +7,13 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
-import AboutPage from "./components/AboutPage";
-import DetailPage from "./components/DetailPage";
+import AboutPage from "./pages/AboutPage";
+import DetailPage from "./pages/DetailPage";
+import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
 import Footer from "./components/Footer";
 import Navber from "./components/Navbar";
-import ProductPage from "./components/ProductPage";
-import HomePage from "./pages/HomePage";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about"><AboutPage/></Route>
           <Route path="/detail"><DetailPage/></Route>
           <Route path="/product"><ProductPage/></Route>
+          <Route path="/contact"><ContactUs/></Route>
         </Switch>
         <Footer></Footer>
       </Router>

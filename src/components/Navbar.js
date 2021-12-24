@@ -17,6 +17,8 @@ const Navber = () => {
               <NavLink className="nav-link" to="/" exact>Home</NavLink>
               <NavLink className="nav-link" to="/about">About</NavLink>
               <NavLink className="nav-link" to="/product">Product</NavLink>
+              <NavLink className="nav-link" to="/detail">Detail</NavLink>
+              <NavLink className="nav-link" to="/contact">Contact Us</NavLink>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
