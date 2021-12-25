@@ -1,10 +1,13 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import {
   NavLink
 } from "react-router-dom";
 
 const Navber = () => {
+  const history = useHistory()
+
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -19,17 +22,15 @@ const Navber = () => {
               <NavLink className="nav-link" to="/product">Product</NavLink>
               <NavLink className="nav-link" to="/detail">Detail</NavLink>
               <NavLink className="nav-link" to="/contact">Contact Us</NavLink>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+              <NavDropdown title="Workshop Pagination" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() =>{
+                  history.replace("/hospitalPage")
+                }}>Hospital List</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                <NavDropdown.Item onClick={() =>{
+                  history.replace("/category")
+                }}>
+                  News Category
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

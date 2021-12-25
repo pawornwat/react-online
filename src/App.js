@@ -14,6 +14,7 @@ import ProductPage from "./pages/ProductPage";
 import Footer from "./components/Footer";
 import Navber from "./components/Navbar";
 import ContactUs from "./pages/ContactUs";
+import HospitalPage from "./pages/hospital/HospitalPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/detail/:id/title/:title"><DetailPage/></Route>
           <Route path="/product"><ProductPage/></Route>
           <Route path="/contact"><ContactUs/></Route>
+          <Route path='/hospitalPage'><HospitalPage/></Route>
         </Switch>
         <Footer></Footer>
       </Router>
