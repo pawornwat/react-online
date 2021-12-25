@@ -76,7 +76,7 @@ const ProductPage = () => {
                       <Image src={p.picture} rounded width={60} />
                     </td>
                     <td>
-                      <Link to="/detail">
+                      <Link to={`/detail/${p.id}/title/${p.title}`}>
                         <Button variant="primary">Click</Button>
                       </Link>
                     </td>
