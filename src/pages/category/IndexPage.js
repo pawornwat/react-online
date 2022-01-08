@@ -74,9 +74,23 @@ export default function IndexPage() {
                       <Link to={``}>
                         <Button className="mr-5" variant="primary">Edit <AiFillEdit/></Button>
                       </Link>
-                      <Link to={``}>
-                        <Button variant="danger">Delete <AiFillDelete/></Button>
-                      </Link>
+                        <Button variant="danger" onClick={
+                          async () => {
+                            const isConfirm = window.confirm('Confirm to delete >> '+c.name+'?')
+                            if(isConfirm === true){
+                              const apiUrl = `https://api.codingthailand.com/api/category/${c.id}`
+                              try{
+                                  console.log(apiUrl)
+                                  const resp = await axios.delete(apiUrl)
+                                  alert(resp.data.message)
+                                  // history.push('/category')
+                                  window.location.reload();
+                              }catch(error){
+                                  alert(error)
+                              }
+                            }
+                          }
+                        }>Delete <AiFillDelete/></Button>
                     </td>
                   </tr>
                 );
