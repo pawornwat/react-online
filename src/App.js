@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import Navber from "./components/Navbar";
 import ContactUs from "./pages/ContactUs";
 import HospitalPage from "./pages/hospital/HospitalPage";
+import IndexPage from "./pages/category/IndexPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/product"><ProductPage/></Route>
           <Route path="/contact"><ContactUs/></Route>
           <Route path='/hospitalPage'><HospitalPage/></Route>
+          <Route path='/category'><IndexPage/></Route>
         </Switch>
         <Footer></Footer>
       </Router>
