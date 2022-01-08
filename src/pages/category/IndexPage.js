@@ -3,8 +3,11 @@ import { Table, Image, Badge, Spinner, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import {AiFillEdit,AiFillDelete} from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 export default function IndexPage() {
+  const history = useHistory();
+
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -51,6 +54,7 @@ export default function IndexPage() {
       <div className="row">
         <div className="col-md-12 mt-4">
           <h2>Category</h2>
+          <Button className="mb-3" variant="success" onClick={()=>{history.push('/category/create')}}> + Add New Category</Button>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -68,7 +72,7 @@ export default function IndexPage() {
                     <td>{c.name}</td>
                     <td>
                       <Link to={``}>
-                        <Button variant="primary">Edit <AiFillEdit/></Button>
+                        <Button className="mr-5" variant="primary">Edit <AiFillEdit/></Button>
                       </Link>
                       <Link to={``}>
                         <Button variant="danger">Delete <AiFillDelete/></Button>
