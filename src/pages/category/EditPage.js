@@ -14,7 +14,7 @@ const schema = yup
 
 export default function EditPage() {
   const history = useHistory();
-  const {id} = useParams(); 
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
@@ -28,7 +28,7 @@ export default function EditPage() {
     const apiUrl = "https://api.codingthailand.com/api/category";
     try {
       const dataResult = {
-        id : id,
+        id: id,
         name: data.name,
       };
       const resp = await axios.put(apiUrl, dataResult);
@@ -38,15 +38,15 @@ export default function EditPage() {
       alert(error);
     }
   };
-  const getData = async (id) =>{
+  const getData = async (id) => {
     const resp = await axios.get(
-      "https://api.codingthailand.com/api/category"+id
-    )
-    setValue('name')
-  }
+      "https://api.codingthailand.com/api/category" + id
+    );
+    setValue("name");
+  };
   React.useEffect(() => {
-    getData(id)
-  },[id])
+    getData(id);
+  }, [id]);
 
   return (
     <div className="container">

@@ -21,18 +21,13 @@ import EditPage from "./pages/category/EditPage";
 import LoginPage from "./pages/LoginPage";
 import UploadPage from "./pages/UploadPage";
 import RegisterPage from "./pages/RegisterPage";
-import { ToastProvider } from 'react-toast-notifications'
+import { ToastProvider } from "react-toast-notifications";
 import PrivateRoute from "./guard/auth";
 import MemberPage from "./pages/MemberPage";
-
-
-
 
 function App() {
   return (
     <ToastProvider placement="top-center">
-      
-
       <Router>
         <Navber></Navber>
         <Switch>
