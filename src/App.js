@@ -18,10 +18,21 @@ import HospitalPage from "./pages/hospital/HospitalPage";
 import IndexPage from "./pages/category/IndexPage";
 import CreatePage from "./pages/category/CreatePage";
 import EditPage from "./pages/category/EditPage";
+import LoginPage from "./pages/LoginPage";
+import UploadPage from "./pages/UploadPage";
+import RegisterPage from "./pages/RegisterPage";
+import { ToastProvider } from 'react-toast-notifications'
+import PrivateRoute from "./guard/auth";
+import MemberPage from "./pages/MemberPage";
+
+
+
 
 function App() {
   return (
-    <>
+    <ToastProvider placement="top-center">
+      
+
       <Router>
         <Navber></Navber>
         <Switch>
@@ -44,20 +55,38 @@ function App() {
             <HospitalPage />
           </Route>
           {/* <Route path='/category'><IndexPage/></Route> */}
-          <Route path="/category"
+          <Route
+            path="/category"
             render={({ match: { url } }) => (
               <>
-              <Route path={`${url}/`} exact><IndexPage /></Route>
-              <Route path={`${url}/create`}><CreatePage/></Route>
-              <Route path={`${url}/edit/:id`}><EditPage/></Route>
+                <Route path={`${url}/`} exact>
+                  <IndexPage />
+                </Route>
+                <Route path={`${url}/create`}>
+                  <CreatePage />
+                </Route>
+                <Route path={`${url}/edit/:id`}>
+                  <EditPage />
+                </Route>
               </>
-              
-            )}>
+            )}
+          ></Route>
+          <Route path="/upload">
+            <UploadPage />
           </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <PrivateRoute path="/member">
+            <MemberPage />
+          </PrivateRoute>
         </Switch>
         <Footer></Footer>
       </Router>
-    </>
+    </ToastProvider>
   );
 }
 

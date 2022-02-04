@@ -71,9 +71,7 @@ export default function IndexPage() {
                     <td>{c.id}</td>
                     <td>{c.name}</td>
                     <td>
-                      <Link to={``}>
-                        <Button className="mr-5" variant="primary">Edit <AiFillEdit/></Button>
-                      </Link>
+                        <Button className="mr-5" variant="primary" onClick={()=> history.push('/category/edit/'+c.id)}>Edit <AiFillEdit/></Button>
                         <Button variant="danger" onClick={
                           async () => {
                             const isConfirm = window.confirm('Confirm to delete >> '+c.name+'?')
