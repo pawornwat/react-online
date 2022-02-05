@@ -1,14 +1,26 @@
 import React from 'react'
 import { BsFillHeartFill } from 'react-icons/bs'
+import { UserStoreContext } from '../context/UserContext';
 
 const HomePage = () => {
+
+  const userStore = React.useContext(UserStoreContext);
+  const getProfile = () => {
+    const profileValue = JSON.parse(localStorage.getItem("profile"));
+    if (profileValue) {
+      // setProfile(profileValue);
+      userStore.updateProfile(profileValue)
+    }
+  };
+
+
     return (
         <div>
             <main role="main">
           {/* Main jumbotron for a primary marketing message or call to action */}
           <div className="jumbotron">
             <div className="container">
-              <h1 className="display-3">Hello, world! <BsFillHeartFill color="pink" /> </h1>
+              <h1 className="display-3">Hello, world! {userStore.profile ? (userStore.profile.name) : (<></>)}<BsFillHeartFill color="pink" /> </h1>
               <p>
                 This is a template for a simple marketing or informational
                 website. It includes a large callout called a jumbotron and

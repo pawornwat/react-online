@@ -8,7 +8,7 @@ const UserStoreProvider = ({children}) => {
     const [profile,setProfile] = React.useState(null)
     const userStore = {
         profile: profile,
-        updateProfile:(profile) => setProfile()
+        updateProfile:(profile) => setProfile(profile)
     }
 
     return(

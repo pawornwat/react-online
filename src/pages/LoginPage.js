@@ -60,9 +60,10 @@ const LoginPage = () => {
       addToast("ล็อกอินสำเร็จ", { appearance: "success", autoDismiss: true });
       const profileValue = JSON.parse(localStorage.getItem('profile'))
       userStore.updateProfile(profileValue)
+      console.log(userStore.profile)
 
       history.replace("/");
-      history.go(0);
+      // history.go(0);
     } catch (error) {
       addToast(error.response.data.message, {
         appearance: "error",
