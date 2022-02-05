@@ -3,22 +3,25 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { UserStoreContext } from "../context/UserContext";
 
 const NavBar = () => {
   const { addToast } = useToasts();
   const history = useHistory();
-  const [profile, setProfile] = useState(null);
+  const userStore = React.useContext(UserStoreContext);
 
-  const getProfile = () => {
-    const profileValue = JSON.parse(localStorage.getItem("profile"));
-    if (profileValue) {
-      setProfile(profileValue);
-    }
-  };
+  // const [profile, setProfile] = useState(null);
 
-  React.useEffect(() => {
-    getProfile();
-  }, []);
+  // const getProfile = () => {
+  //   const profileValue = JSON.parse(localStorage.getItem("profile"));
+  //   if (profileValue) {
+  //     setProfile(profileValue);
+  //   }
+  // };
+
+  // React.useEffect(() => {
+  //   getProfile();
+  // }, []);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -86,9 +89,9 @@ const NavBar = () => {
                 Member
               </NavLink>
             </Nav>
-            {profile ? (
+            {userStore.profile ? (
               <span className="nav-text">
-                Welcome {profile.name}{" "}
+                Welcome {userStore.profile.name}{" "}
                 <button onClick={logout} className="btn btn-danger ml-2">
                   Logout
                 </button>

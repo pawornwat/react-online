@@ -24,64 +24,67 @@ import RegisterPage from "./pages/RegisterPage";
 import { ToastProvider } from "react-toast-notifications";
 import PrivateRoute from "./guard/auth";
 import MemberPage from "./pages/MemberPage";
+import UserStoreProvider from "./context/UserContext";
 
 function App() {
   return (
-    <ToastProvider placement="top-center">
-      <Router>
-        <Navber></Navber>
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/about">
-            <AboutPage />
-          </Route>
-          <Route path="/detail/:id/title/:title">
-            <DetailPage />
-          </Route>
-          <Route path="/product">
-            <ProductPage />
-          </Route>
-          <Route path="/contact">
-            <ContactUs />
-          </Route>
-          <Route path="/hospitalPage">
-            <HospitalPage />
-          </Route>
-          {/* <Route path='/category'><IndexPage/></Route> */}
-          <Route
-            path="/category"
-            render={({ match: { url } }) => (
-              <>
-                <Route path={`${url}/`} exact>
-                  <IndexPage />
-                </Route>
-                <Route path={`${url}/create`}>
-                  <CreatePage />
-                </Route>
-                <Route path={`${url}/edit/:id`}>
-                  <EditPage />
-                </Route>
-              </>
-            )}
-          ></Route>
-          <Route path="/upload">
-            <UploadPage />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <PrivateRoute path="/member">
-            <MemberPage />
-          </PrivateRoute>
-        </Switch>
-        <Footer></Footer>
-      </Router>
-    </ToastProvider>
+    <UserStoreProvider>
+      <ToastProvider placement="top-center">
+        <Router>
+          <Navber></Navber>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
+            </Route>
+            <Route path="/detail/:id/title/:title">
+              <DetailPage />
+            </Route>
+            <Route path="/product">
+              <ProductPage />
+            </Route>
+            <Route path="/contact">
+              <ContactUs />
+            </Route>
+            <Route path="/hospitalPage">
+              <HospitalPage />
+            </Route>
+            {/* <Route path='/category'><IndexPage/></Route> */}
+            <Route
+              path="/category"
+              render={({ match: { url } }) => (
+                <>
+                  <Route path={`${url}/`} exact>
+                    <IndexPage />
+                  </Route>
+                  <Route path={`${url}/create`}>
+                    <CreatePage />
+                  </Route>
+                  <Route path={`${url}/edit/:id`}>
+                    <EditPage />
+                  </Route>
+                </>
+              )}
+            ></Route>
+            <Route path="/upload">
+              <UploadPage />
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <PrivateRoute path="/member">
+              <MemberPage />
+            </PrivateRoute>
+          </Switch>
+          <Footer></Footer>
+        </Router>
+      </ToastProvider>
+    </UserStoreProvider>
   );
 }
 

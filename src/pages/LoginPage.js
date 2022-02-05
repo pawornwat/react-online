@@ -6,6 +6,9 @@ import * as yup from "yup";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { UserStoreContext } from "../context/UserContext";
+
+
 
 const schema = yup
   .object({
@@ -31,6 +34,7 @@ const LoginPage = () => {
   });
 
   const { addToast } = useToasts();
+  const userStore = React.useContext(UserStoreContext)
 
   const onSubmit = async (data) => {
     try {
@@ -54,6 +58,9 @@ const LoginPage = () => {
       );
       //alert(response.data.message)
       addToast("ล็อกอินสำเร็จ", { appearance: "success", autoDismiss: true });
+      const profileValue = JSON.parse(localStorage.getItem('profile'))
+      userStore.updateProfile(profileValue)
+
       history.replace("/");
       history.go(0);
     } catch (error) {
