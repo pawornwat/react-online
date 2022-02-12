@@ -4,22 +4,24 @@ import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { UserStoreContext } from "../context/UserContext";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfile } from "../redux/actions/authAction";
 
 const NavBar = () => {
   const { addToast } = useToasts();
   const history = useHistory();
   const userStore = React.useContext(UserStoreContext);
-  const profileRedux = useSelector((state) => state.authReducer.profile)
-
+  const profileRedux = useSelector((state) => state.authReducer.profile);
+  const dispatch = useDispatch();
   // const [profile, setProfile] = useState(null);
 
   const getProfile = () => {
     const profileValue = JSON.parse(localStorage.getItem("profile"));
     if (profileValue) {
       // setProfile(profileValue);
-      userStore.updateProfile(profileValue)
-      console.log(userStore.profile)
+      // userStore.updateProfile(profileValue);
+      // console.log(userStore.profile);
+      dispatch(updateProfile(profileValue))
     }
   };
 
@@ -90,12 +92,12 @@ const NavBar = () => {
                 activeClassName="active"
                 to="/member"
               >
-                Member {profileRedux.name}
+                Member
               </NavLink>
             </Nav>
-            {userStore.profile ? (
+            {profileRedux ? (
               <span className="nav-text">
-                Welcome {userStore.profile.name}{" "}
+                Welcome {profileRedux.name}{" "}
                 <button onClick={logout} className="btn btn-danger ml-2">
                   Logout
                 </button>

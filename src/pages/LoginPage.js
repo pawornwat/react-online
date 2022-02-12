@@ -7,6 +7,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { UserStoreContext } from "../context/UserContext";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "../redux/actions/authAction";
 
 
 
@@ -36,6 +38,9 @@ const LoginPage = () => {
   const { addToast } = useToasts();
   const userStore = React.useContext(UserStoreContext)
 
+  // call action by redux
+  const dispatch = useDispatch()
+
   const onSubmit = async (data) => {
     try {
       const apiURL = "https://api.codingthailand.com/api/login";
@@ -59,7 +64,8 @@ const LoginPage = () => {
       //alert(response.data.message)
       addToast("ล็อกอินสำเร็จ", { appearance: "success", autoDismiss: true });
       const profileValue = JSON.parse(localStorage.getItem('profile'))
-      userStore.updateProfile(profileValue)
+      // userStore.updateProfile(profileValue)
+      dispatch(updateProfile(profileValue))
       console.log(userStore.profile)
 
       history.replace("/");
