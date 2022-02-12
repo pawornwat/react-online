@@ -29,7 +29,8 @@ import UserStoreProvider from "./context/UserContext";
 // redux setup
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import rootReducer from "./redux";
+import rootReducer from "./redux/reducers";
+import CartPage from "./pages/CartPage";
 const store = createStore(rootReducer);
 function App() {
   return (
@@ -65,6 +66,9 @@ function App() {
               </Route>
               <Route path="/upload">
                 <UploadPage />
+              </Route>
+              <Route path="/cart">
+                <CartPage />
               </Route>
               <PrivateRoute path="/member">
                 <MemberPage />
